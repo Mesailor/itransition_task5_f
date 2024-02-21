@@ -1,4 +1,4 @@
-class BackService {
+class APIService {
   async getData20({ region, seed, page, errorNum }) {
     let url = `http://localhost:3002/${region}-${seed}-${page}-${errorNum}-20`;
     let data = await fetch(url).then((response) => response.json());
@@ -18,4 +18,4 @@ class BackService {
   }
 }
 
-export default new BackService();
+export default new APIService();

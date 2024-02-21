@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import backService from "../../services/backService";
+import apiService from "../../services/APIService";
 
 export const AppContext = createContext();
 
@@ -27,12 +27,10 @@ export function AppProvider({ children }) {
     if (seed === "" || seed < 0) return;
     if (errorNum === "" || errorNum < 0) return;
     try {
-      backService
-        .getData20({ region, seed, page: 0, errorNum })
-        .then((data) => {
-          setPage(0);
-          setUsersData(data);
-        });
+      apiService.getData20({ region, seed, page: 0, errorNum }).then((data) => {
+        setPage(0);
+        setUsersData(data);
+      });
     } catch (e) {
       console.log(e);
     }

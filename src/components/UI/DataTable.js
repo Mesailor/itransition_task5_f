@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import TableRow from "./TableRow";
 import { AppContext } from "../context/AppContext";
-import backService from "../../services/backService";
+import apiService from "../../services/APIService";
 
 export default function DataTable() {
   let { usersData, setUsersData, page, setPage, region, seed, errorNum } =
@@ -10,7 +10,7 @@ export default function DataTable() {
   function addMoreData() {
     setPage(++page);
     try {
-      backService.getData10({ region, seed, page, errorNum }).then((data) => {
+      apiService.getData10({ region, seed, page, errorNum }).then((data) => {
         setUsersData(usersData.concat(data));
       });
     } catch (e) {

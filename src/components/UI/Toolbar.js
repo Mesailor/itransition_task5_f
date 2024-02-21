@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
-import backService from "../../services/backService";
+import apiService from "../../services/APIService";
 
 export default function Toolbar() {
   let {
@@ -26,7 +26,7 @@ export default function Toolbar() {
     setErrorNum(e.target.value);
     if (e.target.value === "" || e.target.value < 0) return;
     try {
-      backService
+      apiService
         .changeErrors({ region, seed, page, errorNum: e.target.value })
         .then((data) => {
           setUsersData(data);
